@@ -15,4 +15,4 @@ notebook](https://github.com/bkcooper/moire-sim-demo/blob/master/sim-demo.ipynb)
 in the repository explains what's going on and offers tips on building
 your own.
 
-![These stripes are good camouflage for ...]({filename}../images/small_stripe_pattern.png) ![... a horse. Naturally.]({filename}../images/stripe_product.png)
+![These stripes are good camouflage for ...]({filename}../images/small_stripe_pattern.png){: style="max-width: 45%" } ![... a horse. Naturally.]({filename}../images/stripe_product.png){: style="max-width: 45%"}
