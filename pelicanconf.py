@@ -8,6 +8,7 @@ THEME = 'flex-bkc'
 SITEURL = 'https://bkcooper.github.io'
 
 PATH = 'content'
+STATIC_PATHS = ['images', 'static']
 
 TIMEZONE = 'America/Los_Angeles'
 

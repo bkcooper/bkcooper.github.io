@@ -3,6 +3,7 @@ Slug: research
 aside_title: Research
 toc_list: photophysics, quantumcomp
 toc_text: Computational microscopy, Quantum computing
+load_mathjax: True
 
 <h2 id='photophysics'>Photophysics and inference from images</h2>
 
@@ -20,7 +21,7 @@ been an active research area for decades. __In [Andrew York's lab](
 https://andrewgyork.github.io/) at [Calico](
 https://www.calicolabs.com), we have developed approaches to augment
 classic deconvolution techniques with extra information about the
-photophysical behavior of the emitters.__ For background, read on,
+photophysical behavior of the emitters.__ Read on for some background,
 or [jump ahead](#micro-my-work) to the discussion of my contributions.
 
 ### Background
@@ -45,9 +46,21 @@ def richardson_lucy(img, guess=None, n_iter=64):
     return guess
 ```
 
+Richardson-Lucy corresponds to a special form of gradient descent to find the
+__maximum likelihood estimate__ assuming that each pixel of the image is
+corrupted by Poisson noise. The distinction from usual gradient descent
+is that the step size is fixed, but scaled at each point multiplicatively by
+the current estimate. One nice feature of the multiplicative update
+is that (given a feasible estimate and a positive semidefinite blurring
+operator H) it automatically preserves a non-negativity constraint on the
+estimate. Much of the performance of Richardson-Lucy derives from this
+constraint.
+
 Originally, H was just convolution with some point spread function.
-However, the algorithm works just as well for any linear operation H.
-[Ingaramo et al.](
+However, the algorithm works just as well for any linear operation H. It
+is best suited for linear operators with special structure that allow fast
+computation; this generally means that H is diagonal either in estimate space
+or in the Fourier domain. [Ingaramo et al.](
 https://onlinelibrary.wiley.com/doi/abs/10.1002/cphc.201300831) point
 out that this makes Richardson-Lucy very flexible and suited for a broad
 range of computational microscopy tasks. In particular, it works nicely with
@@ -95,21 +108,100 @@ be difficult.
 
 <h3 id="micro-my-work">My work</h3>
 
-Richardson-Lucy corresponds to a special form of gradient descent to find the
-maximum likelihood estimate assuming that each pixel of the image is
-corrupted by Poisson noise. The distinction from usual gradient descent
-is that the step size is fixed, but scaled at each point multipicatively by
-the current estimate. One very nice thing feature of the multiplicative update
-is that (given a feasible estimate and a positive semidefinite blurring
-operator H) it automatically preserves a non-negativity constraint on the
-estimate. Much of the performance of Richardson-Lucy derives from this
+Our first project consisted of __incorporating photobleaching into a
+deconvolution algorithm.__ Photobleaching is a process where emitting
+molecules irreversibly stop glowing. We chose it as a first effect to
+add because photobleaching is both ubiquitous and easily modeled. To a
+good approximation, over short times the conditional probability of $x_{t+1}$
+emitters remaining unbleached given $x_{t}$ is a binomial distribution. The
+probability of bleaching depends on the illumination dose received during
+each exposure; typically we assume uniform illumination, corresponding to
+well-executed widefield microscopy, but the method can be tailored to other
+situations.
+
+To add photobleaching effects to our reconstructions, we considered a time
+series of images of a stationary object. We then used a joint likelihood
+function for all the frames, combining the Poisson likelihood associated
+with the images with the binomial likelihood associated with photobleaching.
+To get around the discreteness of the binomial, we used an interpolated
+version where factorials were replaced by gamma functions. This requires
+an additional constraint on the estimate. In addition to non-negativity,
+the number of emitters at each pixel must be non-increasing, since bleaching
+only goes one way. Richardson-Lucy is unequipped to handle this constraint,
+so initially we used a projected gradient descent, with the pool adjacent
+violators algorithm (PAVA) used as a fast projector. Later, we realized that
+you can also work in a "decay basis" where the estimate is expressed as
+the number of bleaching events that occur between this frame and the next.
+In this basis, both constraints reduce again to a simple non-negativity
 constraint.
 
-Our first project consisted of __incorporating photobleaching into a
-deconvolution algorithm.__ Photobleaching is a process where emitting molecules
-irreversibly stop glowing. It is generally seen as a nuisance that reduces
-measurable signal
+Testing our algorithm on synthetic data, we successfully demonstrated many of
+the qualities that motivated its development. It can run for many more
+iterations (and closer to convergence) than Richardson-Lucy
+before showing high spatial frequency artifacts, demonstrating the
+regularizing effect of the extra information. Intriguingly, in appropriate
+conditions our algorithm also demonstrates a capacity for localization.
+The figure below demonstrates how this arises. At late time points --
+corresponding to moving down the y-axis on each panel -- many
+of the emitters have bleached out, leaving a very sparse distribution.
+In this situation Poisson maximum likelihood does very well as a localization
+algorithm, and the non-increasing constraint imposed by the bleaching gives
+us a way to propagate this information back to earlier time points.
+![Spatiotemporal deconvolution can localize when conditions are right]({static}../images/sparse_example.svg){: class="center"}
+You can see our [poster]({static}../static/fom_stdecon.pdf) from the 2017
+Focus on Microscopy conference for more pictures and details.
 
+Further testing showed one unpleasant feature of the algorithm.  For
+combinatorial reasons, the bleaching part of the likelihood favors
+solutions where density is concentrated in a single pixel rather than
+spread over multiple pixels. In situations where the spatial
+information isn't strong enough to counteract this, the result is a
+bias toward overly compact solutions. On a restricted version of the
+problem amenable to exact solution using the forward-backward algorithm for
+hidden Markov models, we showed this is a result of looking at the maximum
+likelihood for the full trajectory rather than the marginal
+probability distribution of emitters at the first time point. To
+counteract this problem, we experimented with a different loss
+function that penalizes bleaching trajectories far from the
+exponential decay expected on average. This works well as an
+approximation, but has its own biases toward "anti-clumped"
+data. Trying to find the right approximation to the marginal at the
+first time point (or using MCMC techniques to calculate it) remains an
+open problem.
+
+Another interesting question which arose when testing the photobleaching
+algorithm concerns __the optimal exposure time given photobleaching.__
+Our deconvolution with photobleaching takes a time series of images and
+benefits from dividing a fixed number of counts over multiple exposures.
+Basic Richardson-Lucy, on the other hand, lacks a way to integrate multiple
+frames and so suffers as we divide time more finely. In our model where only
+Poisson noise is relevant, we can sum frames to recombine them while still
+preserving the Poisson noise structure. We wanted to compare our algorithm
+to the fairest choice of exposure time for Richardson-Lucy; however, when
+we looked into what this would be, we were surprised not to find anything
+in the microscopy literature about this issue.
+
+I developed theory for determining optimal exposure times in the
+presence of photophysical noise. For photobleaching, longer exposure times
+lower the relative amount of Poisson noise but increase the influence of
+bleaching noise. In the case of exponential decay predicted
+by single exponential photobleaching, I was able to derive limiting results;
+however, the theory also generalizes to other forms of noise where you
+must instead measure the variance in the emitter fluctuations. We think one
+reason this noise went unremarked on in the field for a long time is because
+it has a very different character from Poisson noise. Photophysical noise
+is blurred by the microscope's point spread function. Consequently
+it is smooth and easily attributed to features of the sample. This blurring
+also means that the balance between Poisson and photobleaching noise
+varies depending on spatial frequency.
+
+A key parameter for this model is the expected number of counts generated
+by an emitter before bleaching. A surprising result of our work is that
+increasing this value has less impact on the signal to noise ratio than
+one might expect. A well known property of Poisson noise is that with
+$N$ counts, the signal to noise ratio is $N^{1/2}$. When photobleaching
+noise is taken into account, the signal to noise ratio at the optimal
+exposure time is $N^{1/4}.$
 
 <h2 id="quantumcomp">Earlier work -- quantum computing</h2>
 
