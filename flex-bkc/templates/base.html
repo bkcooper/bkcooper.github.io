@@ -91,7 +91,7 @@
         {% if SITELOGO %}
         <img src="{{ SITELOGO }}" alt="{{ SITETITLE }}" title="{{ SITETITLE }}">
         {% else %}
-        <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/profile.png" alt="{{ SITETITLE }}" title="{{ SITETITLE }}">
+        <img src="{{ SITEURL }}/images/bkc_photo_crop.jpg" alt="{{ SITETITLE }}" title="{{ SITETITLE }}">
         {% endif %}
       </a>
       <h1><a href="{{ SITEURL }}">{{ SITETITLE }}</a></h1>
@@ -107,12 +107,6 @@
           {% for nextpage in pages|sort(attribute=PAGES_SORT_ATTRIBUTE) %}
 	  {% if not nextpage.no_aside %}
           <li><a href="{{ SITEURL }}/{{ nextpage.url }}{% if not DISABLE_URL_HASH %}#{{ nextpage.slug }}{% endif %}">{% if not nextpage.aside_title %}{{ nextpage.title }} {% else %}{{ nextpage.aside_title }}{% endif %}</a></li>
-	  {% if nextpage == page and nextpage.toc_list %}
-	  <li><ul class="innerlist">
-          {% for headerid in nextpage.toc_list.split(',') %}
-          <li><a href="#{{ headerid.strip() }}"> {{ nextpage.toc_text.split(',')[loop.index0].strip() }}</a><br></li>
-          {% endfor %}</ul></li>
-	  {% endif %}
 	  {% endif %}
           {% endfor %}
 

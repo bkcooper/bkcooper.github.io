@@ -16,3 +16,9 @@ in the repository explains what's going on and offers tips on building
 your own.
 
 ![These stripes are good camouflage for ...]({filename}../images/small_stripe_pattern.png){: style="max-width: 45%" } ![... a horse. Naturally.]({filename}../images/stripe_product.png){: style="max-width: 45%"}
+
+## Inspiration
+
+Bill Thurston, one of the great mathematicians of the 20th century, had
+[this](https://mathoverflow.net/questions/43690/whats-a-mathematician-to-do/44213#44213) beautiful response to a question about how "mere mortals" can
+contribute to mathematics. It is the best justification for science I know.

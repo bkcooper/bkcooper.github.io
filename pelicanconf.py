@@ -39,5 +39,6 @@ SITETITLE = 'Ben Cooper'  # goes in the sidebar
 # USE_GOOGLE_FONTS = False   # True by default
 # LINKS_IN_NEW_TAB = 'external'   # see docs
 
+
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
