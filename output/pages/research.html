@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://bkcooper.github.io/theme/stylesheet/style.min.css">
+
+  <% if page.load_mathjax %>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$', '$'], ["\\(", "\\)"] ]
+          },
+          TeX: {
+              Macros: {
+		  given: "{\\: \\big| \\:}"
+              },
+              equationNumbers: {autoNumber: "AMS" }
+          },
+      });
+    </script>
+    <script async src="https://bkcooper.github.io/theme/minimalmathjax/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <% endif %>
+
+  <link rel="stylesheet" type="text/css" href="https://bkcooper.github.io/theme/pygments/solarized-light.min.css">
+  <link rel="stylesheet" type="text/css" href="https://bkcooper.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="https://bkcooper.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Ben Cooper Atom">
+
+
+
+
+    <meta name="author" content="Ben Cooper" />
+    <meta name="description" content="" />
+<meta property="og:site_name" content="Ben Cooper"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Ben Cooper"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://bkcooper.github.io"/>
+
+  <title>Ben Cooper &ndash; Brief research&nbsp;synopses</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://bkcooper.github.io">
+        <img src="https://bkcooper.github.io/images/bkc_photo_crop.jpg" alt="Ben Cooper" title="Ben Cooper">
+      </a>
+      <h1><a href="https://bkcooper.github.io">Ben Cooper</a></h1>
+
+
+      <nav>
+        <ul class="list">
+          <li><a href="https://bkcooper.github.io/pages/research.html#research">Research</a></li>
+          <li><a href="https://bkcooper.github.io/pages/diversions.html#diversions">Diversions </a></li>
+
+          <li><a href="https://scholar.google.com/citations?user=foQowpoAAAAJ&hl=en" target="_blank">Google Scholar</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+      </ul>
+    </div>
+  </aside>
+  <main>
+
+<article class="single">
+  <header>
+    
+    <h1 id="research">Brief research&nbsp;synopses</h1>
+  </header>
+  <div>
+<h2 id='photophysics'>Photophysics and inference from&nbsp;images</h2>
+
+<p>Fluorescence microscopy has become an essential tool for biological
+research, allowing scientists to visualize subcellular processes
+(often in living cells) with protein specificity and impressive
+spatial and temporal precision.  Despite this power, microscopic
+images are still imperfect representations of the positions of the
+light-emitting fluorophores in the sample. Optical diffraction and
+unavoidable statistical fluctuations in the measured signal lead to
+blurring and noise, even if other error sources are eliminated by
+careful measurement. Using optical and computational techniques to
+bring images closer to the underlying distribution of fluorophores has
+been an active research area for decades. <strong>In <a href="https://andrewgyork.github.io/">Andrew York&#8217;s lab</a> at <a href="https://www.calicolabs.com">Calico</a>, I have developed approaches to augment
+classic deconvolution techniques with extra information about the
+photophysical behavior of the emitters.</strong> The backbone of most of our
+methods is maximum likelihood estimation, but I&#8217;ve also applied other
+techniques (e.g. hidden Markov models, neural networks) to understand
+our&nbsp;problems.</p>
+<p>In one project I incorporated photobleaching (a destructive process
+that extinguishes light-emitting fluorophores) as a prior for maximum
+likelihood deconvolution. Although we chose this as a first
+modification for its simplicity, it proved surprisingly rich. In the
+course of testing our algorithm, I posed a natural question: how can
+we fairly compare a multi-exposure method with a single exposure one?
+Investigating this led me to consider how to take the best image
+possible in the presence of photophysical noise. I developed theory to
+determine optimal single exposure times, and discovered the surprising
+result that this additional noise limits the expected signal-to-noise
+improvement from using bleaching resistant fluorophores. This has
+implications for nearly all fluorescent imaging methods. I also
+developed a nonlinear extension to the well-known Richardson-Lucy
+deconvolution algorithm and applied it to <span class="caps">FRET</span> microscopy, a
+technique where fluorophore-fluorophore interactions are responsible
+for key parts of the&nbsp;signal.</p>
+<p>A more in-depth discussion of these
+projects is available <a href="https://bkcooper.github.io/pages/summary-of-microscopy-work.html">here</a>.</p>
+<h2 id="quantumcomp">Quantum&nbsp;computing</h2>
+
+<p>Google&#8217;s <a href="https://ai.googleblog.com/2019/10/quantum-supremacy-using-programmable.html">quantum supremacy</a> result is a spectacular example of the progress
+made in quantum computing in the last twenty years. That a roughly 50 qubit
+device is so noteworthy is itself a spectacular example of the immense
+engineering challenge quantum computing represents. Fifteen years ago,
+even within the world of superconducting quantum computing &#8212; where the
+qubits are built from small superconducting circuits &#8212; there was no
+consensus even on how one should build a single qubit. Many
+approaches were studied to learn how to build well performing qubits.
+<strong>My Ph.D. <a href="https://drum.lib.umd.edu/handle/1903/14932">thesis</a> was
+an experimental and theoretical study of one particular kind of
+superconducting qubit: the dc <span class="caps">SQUID</span> phase&nbsp;qubit.</strong></p>
+<p>After learning the ropes in the lab by doing measurements on some
+existing devices, I designed a new
+version of this qubit with a large shunt capacitor before the circuit.
+We expected this to allow projective microwave readout of
+the qubit state, in analogy to experiments in other labs. To test this
+I built several
+versions, using both e-beam and photolithographic techniques, and performed
+electronic and microwave measurements on these devices at temperatures
+near 50 millikelvin. When the new
+readout approach failed, I reviewed the theory we were using and found it
+used a key approximation that was no longer appropriate for those device
+parameters. I developed new theory to explain the quantum
+dynamics of our circuit. This theory became an important tool for our
+lab in designing the next generation of qubits to aim for lower loss.
+When we built and measured one of these to check the performance, we found
+unusual features that seemed explicable by quantum behavior in the shunt
+capacitor, in accordance with my&nbsp;theory.</p>
+<p>A longer account of this work is available <a href="https://bkcooper.github.io/pages/summary-of-quantum-computing-work.html">here</a>.</p>
+<h2>Smaller&nbsp;projects</h2>
+
+<p>Before my dissertation, I did some theoretical condensed matter
+research.  My undergraduate thesis under <a href="http:\panic.williams.edu">Daniel
+Aalberts</a> studied a model for the
+conjugated polymer family polyacetylene, a starting point for
+understanding the fast photoisomerization of light detecting molecules
+in the eye. I modified in-house C code to include steric effects in
+the model, looked at soliton behavior in odd-length chains, and
+studied how mechanically stretching these molecules changed the
+transition frequency. Working with <a href="http://physics.umd.edu/~yakovenk/">Victor
+Yakovenko</a>, I studied quasi-1D
+<a href="https://en.wikipedia.org/wiki/Organic_superconductor">organic superconductors</a>. We published a
+paper discussing the Aharanov-Bohm effect as a unifying theme
+explaining the angular magnetoresistance oscillations observed in
+these&nbsp;materials.</p>
+<p>After my Ph.D., I did a brief postdoc in Ian Appelbaum&#8217;s lab. I
+implemented a proof-of-principle experiment to demonstrate the
+feasibility of a capacitive, nonlinear scheme for detecting bound
+Majorana fermion excitations in nanowire systems. Instead of
+nanowires, I fabricated superconducting-insulating-normal junctions as
+a test system to validate the measurement technique. I built a custom
+low-capacitance probe to use with a commercial low temperature
+measurement system, and performed conductivity measurements
+demonstrating the suitability of this&nbsp;approach.</p>  </div>
+</article>
+
+    <footer>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - Theme adapted from <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Ben Cooper ",
+  "url" : "https://bkcooper.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
+</html>
