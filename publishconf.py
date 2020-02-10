@@ -37,7 +37,7 @@ TYPOGRIFY = True
 SITETITLE = 'Ben Cooper'  # goes in the sidebar
 # BROWSER_COLOR =
 # USE_GOOGLE_FONTS = False   # True by default
-# LINKS_IN_NEW_TAB = 'external'   # see docs
+LINKS_IN_NEW_TAB = 'external'   # see docs
 
 DELETE_OUTPUT_DIRECTORY = True  # careful!
 
