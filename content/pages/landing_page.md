@@ -6,7 +6,7 @@ no_aside: True
 Hi!
 
 I'm a physicist, currently working as a scientist in Andrew York's [microscopy
-group](https://andrewgyork.github.com) at [Calico](https://www.calicolabs.com).
+group](https://andrewgyork.github.io) at [Calico](https://www.calicolabs.com).
 The microscopy group has two major roles: to build and support a core
 of instruments for biologists at Calico, and to develop novel techniques and
 instrumentation. On the support side, I do microsope training and
