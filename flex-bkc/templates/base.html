@@ -27,22 +27,7 @@
     <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/stylesheet/style.min.css">
   {% endif %}
 
-  <% if page.load_mathjax %>
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-          tex2jax: {
-              inlineMath: [ ['$', '$'], ["\\(", "\\)"] ]
-          },
-          TeX: {
-              Macros: {
-		  given: "{\\: \\big| \\:}"
-              },
-              equationNumbers: {autoNumber: "AMS" }
-          },
-      });
-    </script>
-    <script async src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/minimalmathjax/MathJax.js?config=TeX-AMS_CHTML"></script>
-  <% endif %>
+  {% block mathjax %} {% endblock %}
 
   <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/pygments/{{ PYGMENTS_STYLE|default('github') }}.min.css">
   <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/font-awesome/css/font-awesome.min.css">
