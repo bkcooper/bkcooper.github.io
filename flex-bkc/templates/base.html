@@ -97,6 +97,8 @@
           <li><a href="{{ SITEURL }}/{{ nextpage.url }}{% if not DISABLE_URL_HASH %}#{{ nextpage.slug }}{% endif %}">{% if not nextpage.aside_title %}{{ nextpage.title }} {% else %}{{ nextpage.aside_title }}{% endif %}</a></li>
           {% endfor %}
 
+	  <hr>
+
           {% for name, link in LINKS %}
           {% if loop.index0 > 0 %}
           <li class='separator'>&bull;</li>
