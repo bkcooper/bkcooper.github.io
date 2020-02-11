@@ -109,12 +109,19 @@ aside {
     }
   }
 
+  hr {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	border: none;
+	height: 0px;
+    }
+
   nav {
     ul {
       li {
         display: inline;
-        line-height: 1.6em;
-        font-size: 1.28em;
+        line-height: 1.25em;
+        font-size: 1em;
       }
     }
 
@@ -430,15 +437,28 @@ ul.social {
     left: 0;
     overflow-y: auto;
 
+    hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: none;
+	height: 1px;
+    }
+
     div {
       padding: 36px 18px;
 
       nav {
         ul {
           li {
-            padding: 0 !important;
-            display: block;
+              padding: 0 !important;
+              line-height: 1.6em;
+              font-size: 1.28em;
+              display: block;
           }
+
+	  li.separator {
+	      display: none;
+	  }
         }
       }
 
