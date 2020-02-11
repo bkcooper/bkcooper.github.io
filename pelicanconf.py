@@ -38,7 +38,7 @@ SITETITLE = 'Ben Cooper'  # goes in the sidebar
 # BROWSER_COLOR =
 # USE_GOOGLE_FONTS = False   # True by default
 # LINKS_IN_NEW_TAB = 'external'   # see docs
-
+DISABLE_URL_HASH = True
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
