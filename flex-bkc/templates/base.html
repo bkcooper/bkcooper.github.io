@@ -89,13 +89,18 @@
           {% if not PAGES_SORT_ATTRIBUTE -%}
               {% set PAGES_SORT_ATTRIBUTE = 'title' %}
           {%- endif %}
-          {% for nextpage in pages|sort(attribute=PAGES_SORT_ATTRIBUTE) %}
-	  {% if not nextpage.no_aside %}
+          {% for nextpage in pages|sort(attribute=PAGES_SORT_ATTRIBUTE)
+             if not nextpage.no_aside %}
+          {% if loop.index0 > 0 %}
+          <li class='separator'>&bull;</li>
+          {% endif %}
           <li><a href="{{ SITEURL }}/{{ nextpage.url }}{% if not DISABLE_URL_HASH %}#{{ nextpage.slug }}{% endif %}">{% if not nextpage.aside_title %}{{ nextpage.title }} {% else %}{{ nextpage.aside_title }}{% endif %}</a></li>
-	  {% endif %}
           {% endfor %}
 
           {% for name, link in LINKS %}
+          {% if loop.index0 > 0 %}
+          <li class='separator'>&bull;</li>
+          {% endif %}
           <li><a href="{{ link }}" target="_blank">{{ name }}</a></li>
           {% endfor %}
         </ul>
