@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block mathjax %}
+  {% if page.load_mathjax %}
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$', '$'], ["\\(", "\\)"] ]
+          },
+          TeX: {
+              Macros: {
+		  given: "{\\: \\big| \\:}"
+              },
+              equationNumbers: {autoNumber: "AMS" }
+          },
+      });
+    </script>
+    <script async src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/minimalmathjax/MathJax.js?config=TeX-AMS_CHTML"></script>
+  {% endif %}
+{% endblock %}
+
+{% block title %} &ndash; Resume {% endblock %}
+
+{% block content %}
+<article class="single">
+  <header>
+    <h1 id="{{ page.slug }}" align="center">{{ page.name }}</h1>
+    <p> {{ page.address}} <span style="float:right;"> <a href="mailto:benjamin.k.cooper+ghpage@gmail.com">benjamin.k.cooper@gmail.com</a></span></p>
+  </header>
+  <hr>
+  <div>
+    {% block before_content %}{% endblock %}
+    {% block page_content %}{{ page.content }}{% endblock %}
+    {% block after_content %}{% endblock %}
+  </div>
+</article>
+{% endblock %}

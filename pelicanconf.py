@@ -22,7 +22,8 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (("Google Scholar", "https://scholar.google.com/citations?user=foQowpoAAAAJ&hl=en"),)
+LINKS = (("Google Scholar", "https://scholar.google.com/citations?user=foQowpoAAAAJ&hl=en"),
+         ("Contact", "mailto:benjamin.k.cooper+ghpage@gmail.com"),)
 
 # Social widget
 # SOCIAL = (('You can add links in your config file', '#'),

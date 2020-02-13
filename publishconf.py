@@ -26,7 +26,8 @@ DEFAULT_LANG = 'en'
 # FEED_ALL_ATOM = 'feeds/all.atom.xml'
 # CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
 
-LINKS = (("Google Scholar", "https://scholar.google.com/citations?user=foQowpoAAAAJ&hl=en"),)
+LINKS = (("Google Scholar", "https://scholar.google.com/citations?user=foQowpoAAAAJ&hl=en"),
+         ("Contact", "mailto:benjamin.k.cooper+ghpage@gmail.com"),)
 
 DEFAULT_PAGINATION = False
 PYGMENTS_STYLE = 'solarized-light'
