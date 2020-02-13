@@ -225,7 +225,7 @@ images dominated by photobleaching noise look smooth on a pixel-to-pixel level.
 This is very different from how Poisson noise from low photodose looks, and
 so bleaching noise distortions can easily be attributed to nonuniformities of
 the sample or its labeling:
-![Photobleaching noise is not spectrally white]({static}../images/exposure_0p5477_photons_10000.gif){: class="center"}
+![Photobleaching noise is not spectrally white]({static}../images/exposure_0p5477_photons_10000.gif){: class="center" style="padding-top: 8px;padding-bottom: 5px;"}
 Another consequence of the noise blurring is that the balance between
 Poisson and photobleaching noise varies depending on spatial
 frequency. Thus, a single exposure time is not well suited for
@@ -255,13 +255,14 @@ from our talk at the 2019 Focus on Microscopy conference.
 Another project I worked on was __extending Richardson-Lucy to deal
 with nonlinear image formation processes.__ Many useful sorts of
 photophysics depend on interactions between molecules. These can't be
-captured by a linear imaging process. The main motivating
-example is FRET, a form of coupling where one "donor" fluorophore can give
-its energy to another "acceptor" emitter. This only occurs when the
-fluorophores are within a few nanometers of each other, well below the
-effective point spread function even of superresolution techniques like STED.
-Examining what sorts of information become available if you include
-constraints of this precision is exciting.
+captured by a linear imaging process. The main motivating example is
+FRET, a form of coupling where one "donor" fluorophore can be excited
+and then give its energy to another "acceptor" emitter. This only
+occurs when the fluorophores are within a few nanometers of each
+other, well below the effective point spread function even of
+superresolution techniques like STED.  Examining what sorts of
+information become available if you include constraints of this
+precision is exciting.
 
 The modifications to Richardson-Lucy to allow nonlinear image formation end
 up being quite simple. You can decompose the image formation operator

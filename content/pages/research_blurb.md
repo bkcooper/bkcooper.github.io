@@ -80,7 +80,7 @@ A longer account of this work is available [here]({filename}qc_summary.md).
 
 <h2>Smaller projects</h2>
 
-Before my dissertation, I did some theoretical condensed matter
+Before my dissertation, I worked on theoretical condensed matter
 research.  My undergraduate thesis under [Daniel
 Aalberts](http:\\panic.williams.edu) studied a model for the
 conjugated polymer family polyacetylene, a starting point for
@@ -92,7 +92,7 @@ transition frequency. Working with [Victor
 Yakovenko](http://physics.umd.edu/~yakovenk/), I studied quasi-1D
 [organic superconductors](
 https://en.wikipedia.org/wiki/Organic_superconductor). We published a
-paper discussing the Aharanov-Bohm effect as a unifying theme
+paper discussing the Aharonov-Bohm effect as a unifying theme
 explaining the angular magnetoresistance oscillations observed in
 these materials.
 
