@@ -60,10 +60,14 @@
           <li><a href="https://bkcooper.github.io/pages/research.html">Research</a></li>
           <li class='separator'>&bull;</li>
           <li><a href="https://bkcooper.github.io/pages/diversions.html">Diversions </a></li>
+          <li class='separator'>&bull;</li>
+          <li><a href="https://bkcooper.github.io/pages/resume.html">Resume</a></li>
 
 	  <hr>
 
           <li><a href="https://scholar.google.com/citations?user=foQowpoAAAAJ&hl=en" target="_blank">Google Scholar</a></li>
+          <li class='separator'>&bull;</li>
+          <li><a href="mailto:benjamin.k.cooper+ghpage@gmail.com" target="_blank">Contact</a></li>
         </ul>
       </nav>
 
@@ -97,7 +101,7 @@ engineering challenge. To make the magic work, you need to keep your
 system coherent, which requires decoupling it from the rest of the
 world.  However, to use your computer to do anything, the qubits need
 to be able to communicate with each other and the
-experimenter&#8230; which requires coupling it to the rest of the
+experimenter&#8230; which requires coupling them to the rest of the
 world. Balancing the tradeoff between these two concerns is the
 fundamental issue in experimental quantum&nbsp;computing.</p>
 <p>Superconducting qubits &#8212; the area I studied &#8212; are a popular choice.
@@ -110,48 +114,54 @@ worse coherence times relative to other technologies. Researchers proposed
 several different styles of superconducting qubit. All of them were based
 on Josephson junctions, usually based on a thin insulating layer between
 two superconductors. These provided the necessary nonlinearity to the
-system to restrict it to two energy&nbsp;levels.</p>
-<p>I worked in a group at the University of Maryland (led by Fred Wellstood,
-Chris Lobb, and Bob Anderson) that studied dc <span class="caps">SQUID</span> phase qubits. Unpacking
-that, dc <span class="caps">SQUID</span> indicates that it was a ring with two Josephson junctions,
-in contrast to a single junction phase qubit. This design, originally
-proposed by <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.89.117901">Martinis et al.</a>,
-conceived of one junction as the qubit junction and the other as a filter. By
-using a junction in the filter, enough degrees of freedom were maintained
-to bias the system to appropriate operating conditions. In Josephson junctions,
-the dc current through the junction corresponds to the phase difference in the
-superconducting wavefunction in the two sides of the junction. When you
-include the capacitance of the junction, you get an equation of motion for
-the phase difference that looks like motion in a &#8220;tilted washboard&#8221; potential.
-By appropriately biasing the dc <span class="caps">SQUID</span> with current and flux, you can operate
-in a regime where this potential is anharmonic, allowing you to isolate the
+system to allow restriction to two energy&nbsp;levels.</p>
+<p>I worked in a group at the University of Maryland (led by Fred
+Wellstood, Chris Lobb, and Bob Anderson) that studied dc <span class="caps">SQUID</span> phase
+qubits. Unpacking that, dc <span class="caps">SQUID</span> indicates that it was a ring with two
+Josephson junctions, in contrast to a single junction <a href="https://en.wikipedia.org/wiki/Phase_qubit">phase
+qubit</a>. This <span class="caps">SQUID</span> design,
+originally proposed by <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.89.117901">Martinis et
+al.</a>,
+conceived of one junction as the qubit junction and the other as a
+filter. By using a junction in the filter, you maintain enough degrees
+of freedom to bias the system to appropriate operating conditions. In
+Josephson junctions, the dc current through the junction corresponds
+to the phase difference in the superconducting wavefunction in the two
+sides of the junction. When you include the capacitance of the
+junction, you get an equation of motion for the phase difference that
+looks like motion in a &#8220;tilted washboard&#8221; potential.  By appropriately
+biasing the dc <span class="caps">SQUID</span> with current and flux, you can operate in a
+regime where this potential is strongly anharmonic, allowing you to isolate the
 two lowest resonances of the well as qubit&nbsp;states.</p>
-<p>Readout was handled by
+<p>We handled state readout of the qubit by measuring quantum
 tunneling out of this potential well. When the qubit tunneled, this produced
 a measurable voltage pulse because of the change in phase. Tunneling is
-exponentially enhanced with increasing energy, giving a method for
-differentiating between 0 and 1. Because
-of the statistical nature of quantum measurements, the final measurement
-was built up from many repeated&nbsp;runs.</p>
+exponentially enhanced with increasing energy, which gives a big difference
+(and thus a mechanism for distinguishing between) in the 0 and 1 states.
+Because of the statistical nature of individual quantum measurements,
+experiments to monitor the quantum state of the qubit involve repeating the
+same conditions many&nbsp;times.</p>
 <h3 id="qc-my-work">My&nbsp;work</h3>
 
-<p>The readout method I just described was a key weakness of the phase qubit
-for at least two reasons. In the &#8220;voltage state&#8221;, the junction dissipates
-energy, requiring a relatively lengthy cooling period afterward to return
-to base temperature. This led to a ceiling on the experimental repetition
-rate of a few hundred per second. This made building up enough counts for
-statistically clean measurements slow, reducing turnaround time on the
-devices we were characterizing. A more fundamental issue is that tunneling
-based readout is not projective: following the tunneling measurement, the
-system is generally not in the same state that you just measured. While
-this doesn&#8217;t represent a problem for device characterization, it&#8217;s a
-dealbreaker for general fault tolerant quantum computation. I thought a
-good research direction might be to try to resolve this&nbsp;issue.</p>
+<p>This tunneling readout method was a key weakness of the phase qubit
+for at least two reasons. In the &#8220;voltage state&#8221;, the junction
+dissipates energy, requiring a relatively lengthy cooling period
+afterward to return to base temperature. This puts a ceiling on the
+experimental repetition rate of a few hundred measurements per
+second. This made building up enough counts for statistically clean
+measurements slow, reducing turnaround time on the devices we were
+characterizing. A more fundamental issue is that tunneling based
+readout is not projective: following the tunneling measurement, the
+system is generally not in the same state that you just
+measured. While this doesn&#8217;t represent a problem for device
+characterization, it&#8217;s a dealbreaker for general fault tolerant
+quantum computation. I decided introducing a better readout to resolve
+these issues would be a good research&nbsp;direction.</p>
 <p>We took inspiration from the <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.93.207002">Josephson bifurcation amplifier</a>. A Josephson junction
 can be viewed as a nonlinear inductance, and oscillators built using this
 nonlinearity can exhibit bistable response to rf excitation. By biasing
-near the bifurcation where the bistability appeared, small changes in the
-frequency arising from modulation of junction parameters could correspond to
+near the bifurcation where bistability appears, small changes in the
+frequency arising from modulation of junction parameters yield
 large changes in a reflected rf signal. We believed that it would be
 possible to use the filter junction of the dc <span class="caps">SQUID</span> in a fashion similar to
 this. <a href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.77.214512">A theoretical study</a> of the dc <span class="caps">SQUID</span> phase qubit predicted that when the qubit
@@ -160,22 +170,25 @@ the <span class="caps">SQUID</span> loop. This would modify the current through 
 shifting the Josephson inductance enough to enable a rf reflectometry readout
 that would be tunneling free and&nbsp;projective.</p>
 <p>I started designing circuits to test this readout approach. The major
-modification from earlier dc <span class="caps">SQUID</span> qubit designs in our lab was the addition
-of a large shunt capacitor before the <span class="caps">SQUID</span> loop. The capacitor effectively
-increased the capacitance of the filter junction, depressing the resonant
-frequency of that system. This moved the frequency of the signal used for
-readout far from the transition frequency for the qubit to minimize unwanted
-transitions during readout. I then fabricated devices for study. The
-circuits were patterned on silicon (and later sapphire) wafers using
-photolithography, and aluminum deposited using a double-angle thermal
-evaporation process. A controlled oxidation step between the two angles of
-the evaporation formed the Josephson&nbsp;junctions.</p>
+modification from earlier dc <span class="caps">SQUID</span> qubit designs in our lab was the
+addition of a large shunt capacitor before the <span class="caps">SQUID</span> loop. The
+capacitor was effectively in parallel with the capacitance of the
+filter junction, depressing the resonant frequency of that
+system. This moved the frequency of the signal used for readout far
+from the transition frequency for the qubit to minimize unwanted
+transitions during readout. After designing these new devices, I began
+fabricating them. The circuits were patterned on silicon (and later
+sapphire) wafers using photolithography, and I deposited aluminum
+using a double-angle thermal evaporation process. A controlled
+oxidation step between the two evaporation angles formed a thin insulating
+layer between two layers of aluminum, defining the Josephson junctions of
+each&nbsp;sample.</p>
 <p>The superconducting transition temperature of aluminum is close to 1 K;
-to achieve those temperatures we mounted our device in a <a href="https://en.wikipedia.org/wiki/Dilution_refrigerator">dilution
+to achieve those temperatures we mounted our qubits in a <a href="https://en.wikipedia.org/wiki/Dilution_refrigerator">dilution
 refrigerator</a>. We
 had already installed heavily filtered low frequency lines for qubit
-measurement and control, and we installed some new microwave lines (
-along with a cryogenic microwave circulator for isolation) for the
+measurement and control, and we installed some new microwave lines (along
+with cryogenic microwave circulators for isolation) for the
 reflectometry&nbsp;measurement.</p>
 <p>When we measured the first sample, we found that the microwave setup
 (including the on-chip lumped element microwave resonator we were measuring)
@@ -195,22 +208,24 @@ theory, a central approximation was that the two junctions of the dc
 <span class="caps">SQUID</span> were well isolated by the large inductance of the <span class="caps">SQUID</span>
 loop. Early phase qubit designs used relatively large area Josephson
 junctions. One reason for this was to reduce the importance of
-critical current fluctuations. However, other researchers showed that
-<a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.95.210503">two-level
+critical current fluctuations in limiting coherence times. However,
+other researchers showed that <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.95.210503">two-level
 systems</a>
-in the Josephson junction dielectric played a more important role. The
-natural way to minimize these is to use smaller junctions. As junctions
-grow smaller, the inductance of the Josephson junction itself grows. In
-moving to smaller junctions, we now had Josephson inductances in the
-filter arm that were non-trivial compared to the combined inductance of the
-<span class="caps">SQUID</span> loop and qubit&nbsp;junction.</p>
+in the Josephson junction dielectric played a more significant role in
+decoherence. The natural way to minimize these unwanted two-level
+fluctuators is to use smaller junctions. As junctions grow smaller,
+their Josephson inductance increases. In moving to
+smaller junctions, we now had Josephson inductances in the filter arm
+that were non-trivial compared to the combined inductance of the <span class="caps">SQUID</span>
+loop and qubit&nbsp;junction.</p>
 <p>The original theory viewed the dynamics as a nonlinear perturbation to
 two harmonic oscillators given by each junction. My revised theory instead
 considered a basis where the appropriate harmonic oscillators are the two
 normal modes of the circuit. With appropriate parameters, this normal modes
 approach returned to the independent junction model. After working out the
 new theory, we found it was substantially better at explaining the behavior
-of other devices being studied in the&nbsp;lab.</p>
+of other qubits (in a similar parameter regime) being studied by other
+researchers in the&nbsp;lab.</p>
 <p>I spent a while longer working on new designs with stronger nonlinearities
 and more tunability, with the goal of demonstrating microwave readout in
 our systems. Eventually, I switched over to the main research direction of
@@ -220,20 +235,24 @@ designed and built a new qubit. This device used a large interdigitated
 capacitor on the smaller junction to improve dielectric quality factor,
 and handled microwave excitation of the qubit using a coplanar waveguide
 modeled to have more controlled coupling to the&nbsp;qubit.</p>
-<p>As we characterized the new qubit, we found it showed unusual spectroscopic
-features. In particular, the peak shape was highly broadened on one side.
-We found that we could explain this well as a consequence of the large
-shunt capacitor in front of the <span class="caps">SQUID</span>. I showed that when the capacitor was
-included in my quantum circuit theory, you could extract an effective
-<a href="https://en.wikipedia.org/wiki/Jaynes%E2%80%93Cummings_model">Jaynes-Cummings model</a> for the system. This model, which had become central
-in superconducting quantum computing, describes the coupling between a
-two-level system (e.g. a qubit) and a harmonic oscillator (e.g. a microwave
-cavity.) In the dispersive limit of the model, the frequency of the qubit
-is shifted proportional to the number of excitations in the cavity. Since
-we had chosen a large capacitance (and thus low frequency filter) to
-maximize isolation to the bias leads, thermal excitation of the filter modes
-was likely substantial. This led to many relatively narrow individual peaks
-being superposed to give the broadened measured&nbsp;peak.</p>  </div>
+<p>As we characterized the new qubit, we found it showed unusual
+spectroscopic features. In particular, the peak shape was highly
+broadened on one side.  We found that we could explain this well as a
+consequence of the large shunt capacitor in front of the <span class="caps">SQUID</span>. I
+showed that when the capacitor was included in my quantum circuit
+theory, you could extract an effective <a href="https://en.wikipedia.org/wiki/Jaynes%E2%80%93Cummings_model">Jaynes-Cummings
+model</a>
+for the system. This model, which had become central in
+superconducting quantum computing from its use in the <a href="https://en.wikipedia.org/wiki/Circuit_quantum_electrodynamics">circuit
+<span class="caps">QED</span></a>
+framework, describes the coupling between a two-level system (e.g. a
+qubit) and a harmonic oscillator (e.g. a microwave cavity). In the
+dispersive limit of the model, the frequency of the qubit is shifted
+proportional to the number of excitations in the cavity. Since we had
+chosen a large capacitance (and thus low frequency filter) to maximize
+isolation to the bias leads, thermal excitation of the filter modes
+was likely substantial. This led to many relatively narrow individual
+peaks being superposed to give the broadened measured&nbsp;peak.</p>  </div>
 </article>
 
     <footer>
