@@ -21,21 +21,23 @@ graduate work for best student talk
 
 ## Experience
 __Scientist, [Calico Life Sciences](https://www.calicolabs.com)__<br>
-2015 - present
+2015 - 2020
 
 * Performed research on computational microscopy in [Andrew York’s
   lab](https://andrewgyork.github.io), with a particular emphasis on
   incorporating photophysics (e.g. photobleaching, FRET) into maximum
   likelihood reconstruction algorithms. Developed and implemented new
-  reconstruction algorithms. Developed new theory of optimal exposure
-  time given photoswitching behaviors.
+  reconstruction algorithms in Python. Developed new theory of photophysics
+  induced noise in fluorescence imaging.
 * Assisted in support of microscopy core for ~50
   biologists. Responsible for training, support and troubleshooting of
   Micro-Manager (Java/C++ open source microscopy control software)
   on core instruments, including modifications to hardware device
   adapters.
-* Collaborated on time lapse movie image analysis project with Calico
-  biologists and Google machine learning engineers.
+* Collaborated on time lapse movie image analysis project with Calico biologists
+  and Google machine learning engineers, using deep learning and classical image
+  analysis techniques for object detection, segmentation, and downstream
+  analysis.
 
 __Scientific computing contractor, National Institutes of Health__<br>2015
 
